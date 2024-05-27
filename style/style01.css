@@ -1,0 +1,681 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  background: rgb(233, 233, 233);
+}
+.container{
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+nav{
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+}
+.navbar{
+  width: 85%;
+  margin: 0 auto;
+}
+
+.logo{
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 3rem;
+  display: flex;
+  align-items: center;
+}
+.logo img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.logo h1{
+  margin-left: 1rem;
+  text-transform: uppercase;
+}
+
+ul{
+  margin: 0 auto;
+}
+li{
+  padding-bottom: 2rem;
+}
+li a{
+  font-size: 16px;
+  color: rgb(85, 83, 83);
+}
+
+nav i{
+  width: 50px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.logout{
+  position: absolute;
+  bottom: 20px;
+}
+
+/* Main Section */
+.main{
+  width: 100%;
+}
+.main-top{
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgb(43, 43, 43);
+}
+.main-body{
+  padding: 20px 20px 20px 20px;
+}
+h1{
+  margin: 20px 10px;
+}
+  
+.search_bar{
+  display: flex;
+  padding: 10px;
+  height: 62px;
+}
+.search_bar input{
+  width: 45%;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: 1px solid rgb(190, 190, 190);
+}
+.search_bar button{
+  width: 120px !important;
+  margin: 0 auto 0 0;
+  margin-left: 20px;
+}
+.search_bar input:focus{
+  border: 1px solid blueviolet;
+}
+.search_bar select {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px 20px 10px 10px; 
+  margin-left: 2rem; 
+  width: 20%;
+  cursor: pointer;
+}
+.search_bar select::-ms-expand {
+  margin: 10px;
+}
+
+.search_bar select::-webkit-select {
+  margin: 10px;
+}
+.search_bar .filter{
+  width: 300px;
+}
+
+.tags_bar{
+  width: 55%;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+.tag{
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tag i{
+  margin-right: 0.7rem;
+}
+.row{
+  display: flex;
+  padding: 10px;
+  margin-top: 1.3rem;
+  justify-content: space-between;
+}
+.row p{
+  color: rgb(54, 54, 54);
+  font-size: 15px;
+}
+.row p span{
+  color: blueviolet;
+}
+.job_card{
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  border: 2px solid rgb(190, 190, 190);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+.job_details{
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+.job_details .img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.job_details .img i{
+  width: 70px;
+  font-size: 3rem;
+  margin-left: 1rem;
+  padding: 10px;
+  color: rgb(82, 22, 138);
+  background: rgb(216, 205, 226);
+}
+.job_details .text{
+  margin-left: 2.3rem;
+  text-align: left;
+}
+.job_details .text span{
+  color: rgb(116, 112, 112);
+}
+.job_salary{
+  text-align: right;
+  color: rgb(54, 54, 54);
+}
+.job_card:active{
+  border: 2px solid blueviolet;
+  transition: 0.4s;
+}
+
+.job_info {
+  display: flex;
+  text-align: right;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+}
+
+
+.job_icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.job_icons i {
+  margin: 0 10px;
+  font-size: 24px; 
+  cursor: pointer;
+  transform: transform .8s;
+}
+.job_icons i:hover {
+  transform: scale(1.2);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mine ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+.dashboard-page{
+    padding: 2rem;
+    padding: 0 auto;
+    margin: 1px 2;
+    border: 0;
+    border-radius: 15px;
+    color: black;
+    font-size: 18px;
+    text-align: justify;
+    display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    flex-direction: row; 
+    height: 96vh;
+    overflow: hidden;
+}
+
+.my-header-h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin:10px;
+    padding: .15rem;
+    border-radius: 5px;
+    max-width: 25%;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.my-footer{
+    background-color: rgba(251, 206, 181, 0.5);;
+    height: 90px;
+}
+.my-btn{
+    cursor: pointer;
+    border-radius: 15px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    background: #FFF80B !important;
+    color: #000 !important; 
+    font-weight: bold;
+}
+.error-messages {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(244, 67, 54, 0.5);
+    color: red;
+    padding: 2px;
+    border-radius: 8px;
+    display: block; /* Changed to block to make it visible by default */
+    text-align: center;
+}
+header{
+    height: 2vh;
+}
+.login-student{
+    background-color: #fbceb5;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+
+.menu-option {
+    background-color: #2186fa;
+    margin: auto;
+    width: 60px;
+    height: 80%;
+    border-radius: 56px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+  .menu-option ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 80px 0;
+}
+
+.menu-option ul li {
+    display: inline-block;
+    vertical-align: middle;
+}
+.menu-icon {
+    width: 20%;
+    padding-right: 10px;
+    text-align: middle;
+}
+.icon {
+    vertical-align: middle; 
+    margin: 16px 0;
+    width: 28px; 
+    height: 28px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+.icon:hover, .icon.clicked  {
+    transform: scale(1.5);
+}
+.content-column {
+    flex: 1;
+    padding-left: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    font-weight: normal; 
+    transition: font-weight 0.1s ease; 
+    display: inline-block; 
+}
+
+a:hover {
+    font-weight: bold;
+    color: #0f1261;
+}
+
+a.active {
+    font-weight: bold;
+    color: #0f1261;
+}
+
+.scrollable-frame {
+    margin-left: 25px;
+    border-radius: 7px;
+    overflow-y: auto; 
+    flex: 1; 
+    flex-direction: column; 
+}
+.scrollable-frame::-webkit-scrollbar {
+    width: 12px; 
+    border-radius: 5px; 
+}
+
+.scrollable-frame::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+.scrollable-frame::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 5px; 
+}
+.db-div0 {
+    display: flex;
+    width: 95%;
+    background-color: #ffffff;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+.db-div0 p{
+    font-family: pacifico;
+    font-size: 32px;
+    text-align: center;
+    margin: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.db-div0 h1, h2, h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#000;
+    margin: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.db-div1 {
+    width: 95%;
+    background-color: #ffffff;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+.db-div2 {
+    display: flex; 
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+}
+.db-div2-1 {
+    flex: 1;
+    display: flex;
+    margin-top: 15px; 
+    margin-right: 15px;
+    flex-direction: column;
+}
+.db-div2-1-1 {
+    background-color: #ffffff;
+    height: 180px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+.db-div2-2 {
+    max-width: 20%;
+    flex: 1;
+    display: flex;
+    margin-top: 15px;
+    flex-direction: column;
+}
+.db-div2-2-1 {
+    background-color: #ffffff;
+    height: 375px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+.db-div2-3 {
+    flex: 1;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 15px;
+    flex-direction: column;
+}
+.db-div2-3-1 {
+    background-color: #ffffff;
+    height: 375px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.profile-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    background-color: #ffffff;
+    height: auto; 
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
+
+.edit-form {
+    width: 80%;
+    color: #000;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.edit-form label {
+    display: inline-block;
+    width: 200px; 
+    text-align: right;
+    margin-left: auto; 
+    margin-right: 20px; 
+}
+
+.edit-form input {
+    width: calc(70% - 50px); 
+    height: 33px;
+    background: #e0dede;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+button{
+	width: 50%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+    margin-bottom: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+
+button:hover{
+	background: #6d44b8;
+}
+
+.center-content {
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+}
+.modal button{
+  width: 220px;
+  margin-bottom: 0;
+}
+
+.modal-content {
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: left;
+  background-color: #fefefe;
+  padding: 40px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.modal-content select {
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  padding: 5px; 
+  width: 30%; 
+}
+
+.student-details{
+  justify-content: center;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail-row label {
+  width: 35%; 
+  margin-right: 20px;
+  text-align: right;
+  font-weight: 500;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.records-header, .records-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.records-header th, .records-table td {
+  padding: 8px;
+  text-align: center;
+}
+
+.records-header th {
+  height: 60px;
+}
+
+.records-table td {
+  border-top: 1px solid #ddd;
+  height: 60px;
+}
+
+.records-table tr:not(:first-child):hover {
+  background-color: #ddd;
+}
+
+.action-icon {
+  font-size: 20px;
+  transition: transform 0.1s;
+  cursor: pointer;
+}
+
+.action-icon:hover {
+  transform: scale(1.3);
+}
+
+.records-header select {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Standard widths for each column */
+.records-header th:nth-child(1),
+.records-table td:nth-child(1) {
+  width: 10%;
+}
+
+.records-header th:nth-child(2),
+.records-table td:nth-child(2) {
+  width: 17%;
+}
+
+.records-header th:nth-child(3),
+.records-table td:nth-child(3) {
+  width: 8%;
+}
+
+.records-header th:nth-child(4),
+.records-table td:nth-child(4) {
+  width: 10%;
+}
+
+.records-header th:nth-child(5),
+.records-table td:nth-child(5) {
+  width: 15%;
+}
+
+.records-header th:nth-child(6),
+.records-table td:nth-child(6) {
+  width: 10%;
+}
+
+.records-header th:nth-child(7),
+.records-table td:nth-child(7) {
+  width: 15%;
+}
+
+.records-header th:nth-child(8),
+.records-table td:nth-child(8) {
+  width: 15%;
+}
+
