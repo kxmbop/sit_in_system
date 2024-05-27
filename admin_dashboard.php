@@ -141,15 +141,45 @@ if (isset($_POST['studentId'])) {
                         </a>
                     </li>
                     <li>
+                        <a href="#" onclick="showContent('reset-password', this)">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                            <span class="nav-item">Reset Password</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showContent('reset-session', this)">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                            <span class="nav-item">Reset Session</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#" onclick="showContent('sit-in', this)">
-                            <i class="fas fa-address-book"></i>
+                            <i class="fa-solid fa-eye"></i>
                             <span class="nav-item">View Sit-In Records</span>
                         </a>
                     </li>
                     <li>
                         <a href="#" onclick="showContent('reports', this)">
-                            <i class="far fa-file-excel"></i>
+                            <i class="fa-solid fa-chart-line"></i>
                             <span class="nav-item">Generate Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showContent('post-announcement', this)">
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <span class="nav-item">Post Announcement</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showContent('P', this)">
+                        <i class="fa-solid fa-person-circle-check"></i>
+                            <span class="nav-item">Booking Request & Approval</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showContent('P', this)">
+                            <i class="far fa-file-excel"></i>
+                            <span class="nav-item">View Feedback/Reports</span>
                         </a>
                     </li>
                     <li>
