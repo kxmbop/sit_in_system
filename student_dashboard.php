@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
   <title>Student Dashboard</title>
-  <link rel="stylesheet" href="style/style01.css"/>
+  <link rel="stylesheet" href="style/style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xr5pF7zZ9aiENRGA3sSFLji/Sp9/Z5OuPck+mXSvzg45SoLLQFtyh2kjTYJePgzrA/Gy9+NQ+74CjMlUIz6P8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -65,50 +65,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="logo">
                     <h1><?php echo $user_name ?? 'undefined'; ?>!</h1>
                 </div>
-                <ul>
-                    <li>
-                        <a href="#" onclick="showContent('dashboard', this)">
+                <ul class="nav-class">
+                    <li class="current-tab">
+                        <a href="#">
                             <i class="fas fa-chart-bar"></i>
                             <span class="nav-item">Dashboard</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('edit-profile', this)">
                             <i class="fas fa-user "></i>
                             <span class="nav-item">Edit Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('view-sessions', this)">
                             <i class="fas fa-address-book"></i>
                             <span class="nav-item">View Sessions</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('feedback-and-reporting', this)">
                         <i class="fas fa-comment"></i>
                             <span class="nav-item">Feedback & Reporting</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('safety-monitoring-alert', this)">
                             <i class="fas fa-exclamation-circle"></i>
                             <span class="nav-item">Safety Monitoring</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('view-announcement', this)">
                             <i class="fas fa-bullhorn"></i>
                             <span class="nav-item">View Announcement</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('future-reservations', this)">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="nav-item">Future Reservations</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="inactive-tab">
                         <a href="#" onclick="showContent('lab-sit-in-rules', this)">
                             <i class="fas fa-book"></i>
                             <span class="nav-item">Lab Sit-in Rules</span>

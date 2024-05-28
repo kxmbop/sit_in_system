@@ -8,10 +8,9 @@ function sanitize_input($data) {
     return $data;
 }
 
-$error_message = ""; // Initialize error message
+$error_message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Student login
     if(isset($_POST['s_login'])) {
         $s_idno = sanitize_input($_POST['s_idno']);
         $s_pswd = sanitize_input($_POST['s_pswd']);
@@ -23,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $result = $stmt->get_result();
         if($result->num_rows > 0){
-            // Login successful
             $row = $result->fetch_assoc();
             session_start();
             $_SESSION['user_id'] = $row['s_id'];
@@ -44,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 
-    // Admin login
     if(isset($_POST['a_login'])) {
         $a_user = sanitize_input($_POST['a_user']);
         $a_pswd = sanitize_input($_POST['a_pswd']);
@@ -56,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $result = $stmt->get_result();
         if($result->num_rows > 0){
-            // Login successful
             $row = $result->fetch_assoc();
             session_start();
             $_SESSION['admin_id'] = $row['a_id'];
@@ -64,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['admin_name'] = $row['a_name'];
             $_SESSION['admin_email'] = $row['a_email'];
 
-            header("Location: admin_dashboard.php");
+            header("Location: a_search.php");
             exit;
         } else {
             $error_message = "Invalid admin credentials. Try again.";
@@ -72,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 
-    // Student signup
     if(isset($_POST['signup'])) {
         $idno = sanitize_input($_POST['modal-s-idno']);
         $name = sanitize_input($_POST['modal-s-name']);
@@ -116,7 +111,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="s_idno" placeholder="ID Number" required="">
                     <input type="password" name="s_pswd" placeholder="Password" required="">
                     <button type="submit" name="s_login">Login</button>
-                    <!-- Display error message for student login -->
                     <?php if (!empty($error_message) && isset($_POST['s_login'])) : ?>
                         <div class="error-message">
                             <?php echo $error_message; ?>
@@ -131,7 +125,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="username" name="a_user" placeholder="Username" required="">
                     <input type="password" name="a_pswd" placeholder="Password" required="">
                     <button type="submit" name="a_login">Login</button>
-                    <!-- Display error message for admin login -->
                     <?php if (!empty($error_message) && isset($_POST['a_login'])) : ?>
                         <div class="error-message">
                             <?php echo $error_message; ?>
@@ -140,7 +133,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
             </div>
 
-            <!-- Student Signup Modal -->
             <div id="studentModal" class="modal">
                 <div class="modal-content">
                     <span class="close" onclick="document.getElementById('studentModal').style.display='none'">&times;</span>
@@ -176,7 +168,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span id="message"></span>
 
                         <button type="submit" name="signup">Signup</button>
-                            <!-- Display error message for signup -->
                             <?php if (!empty($error_message) && isset($_POST['signup'])) : ?>
                                 <div class="error-message">
                                     <?php echo $error_message; ?>
