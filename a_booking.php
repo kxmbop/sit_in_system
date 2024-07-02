@@ -96,8 +96,69 @@ if(isset($_SESSION['admin_id'])) {
         <section class="main">
             <div class="main-body">
                 <h3 style="font-size: 28px; font-weight: bold; text-align: left;">Booking Request and Approval</h3>
+                <div class="booking-table-container">
+                    <div class="booking-thead-container">
+                        <table class="booking-table-thead">
+                            <thead>
+                                <tr>
+                                    <th>Request ID</th>
+                                    <th>Student ID No</th>
+                                    <th>Student Name</th>
+                                    <th>Purpose</th>
+                                    <th>Lab Room</th>
+                                    <th>Requested Time-In</th>
+                                    <th>Request Created on</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="booking-tbody-container">
+                        <table class="booking-table-tbody">
+                            <tbody>
+                                <?php
+                                    $sql = "SELECT booking.*, student.s_idno, student.s_name 
+                                            FROM booking 
+                                            JOIN student ON booking.s_id = student.s_id";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<tr>';
+                                            echo '<td>' . $row['b_id'] . '</td>';
+                                            echo '<td>' . $row['s_idno'] . '</td>';
+                                            echo '<td>' . $row['s_name'] . '</td>';
+                                            echo '<td>' . $row['b_purpose'] . '</td>';
+                                            echo '<td>' . $row['b_labroom'] . '</td>';
+                                            echo '<td>' . $row['b_time_in'] . '</td>';
+                                            echo '<td>' . $row['b_request_dt'] . '</td>';
+                                            echo '<td>';
+
+                                            // Check if b_status is null
+                                            if (is_null($row['b_status'])) {
+                                                echo '<div class="bt-container-01">';
+                                                echo '<button class="btn-accept" onclick="acceptBooking(' . $row['b_id'] . ')">Accept</button>';
+                                                echo '<button class="btn-deny" onclick="denyBooking(' . $row['b_id'] . ')">Deny</button>';
+                                                echo '</div>';
+                                            } else {
+                                                echo '' . $row['b_status'];
+                                            }
+
+                                            echo '</td>';
+                                            echo '</tr>';
+                                        }
+                                    } else {
+                                        echo '<tr><td colspan="8">No booking requests found.</td></tr>';
+                                    }
+                                ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
+
         
     </div>
 
@@ -108,7 +169,39 @@ if(isset($_SESSION['admin_id'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 
 <script>
+    function acceptBooking(bookingId) {
+        if (confirm("Are you sure you want to accept this booking?")) {
+            $.ajax({
+                url: 'php/accept_booking.php',
+                method: 'POST',
+                data: { bookingId: bookingId },
+                success: function(response) {
+                    alert(response); 
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error accepting booking:', error);
+                    alert('Error accepting booking. Please try again.');
+                }
+            });
+        }
+    }
 
+    function denyBooking(bookingId) {
+        if (confirm("Are you sure you want to deny this booking?")) {
+            $.ajax({
+                url: 'php/deny_booking.php',
+                method: 'POST',
+                data: { bookingId: bookingId },
+                success: function(response) {
+                    alert(response); 
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error denying booking:', error);
+                    alert('Error denying booking. Please try again.');
+                }
+            });
+        }
+    }
 </script>
 
 
