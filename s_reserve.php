@@ -24,10 +24,11 @@ if(isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Student Dashboard</title>
-  <link rel="stylesheet" href="style/style.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xr5pF7zZ9aiENRGA3sSFLji/Sp9/Z5OuPck+mXSvzg45SoLLQFtyh2kjTYJePgzrA/Gy9+NQ+74CjMlUIz6P8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xr5pF7zZ9aiENRGA3sSFLji/Sp9/Z5OuPck+mXSvzg45SoLLQFtyh2kjTYJePgzrA/Gy9+NQ+74CjMlUIz6P8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body onload="showContent('dashboard')">
     <div class="container">
@@ -94,19 +95,137 @@ if(isset($_SESSION['user_id'])) {
                 </ul>
             </div>
         </nav>
-
         <section class="main">
             <div class="main-body">
                 <h3 style="font-size: 28px; font-weight: bold; text-align: left;">Future Reservations</h3>
+                <div class="reserve-container">
+                    <form id="reservationForm">
+                        <label style="margin: 0 0 30px 0;">Submit Reservation here for future dates!</label>
+                        <input type="hidden" id="studentId" name="studentId" value="<?php echo $user_id; ?>">
 
+                        <div class="form-group">
+                            <label for="purpose">Purpose:</label>
+                            <select id="purpose" name="purpose" required>
+                                <option value="">Select Purpose</option>
+                                <option value="Java">Java</option>
+                                <option value="Python">Python</option>
+                                <option value="JavaScript">JavaScript</option>
+                                <option value="C++">C++</option>
+                                <option value="C#">C#</option>
+                                <option value="PHP">PHP</option>
+                                <option value="Ruby">Ruby</option>
+                                <option value="Swift">Swift</option>
+                                <option value="Kotlin">Kotlin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="labroom">Lab Room:</label>
+                            <select id="labroom" name="labroom" required>
+                                <option value="">Select Lab Room</option>
+                                <option value="524">524</option>
+                                <option value="526">526</option>
+                                <option value="528">528</option>
+                                <option value="529">529</option>
+                                <option value="542">542</option>
+                                <option value="544">544</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeIn">Requested Time In:</label>
+                            <input type="datetime-local" id="timeIn" name="timeIn" required>
+                        </div>
+
+                        <button type="button" onclick="submitReservation()">Reserve</button>
+                    </form>
+                </div>
+                <div class="student-booking">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID No</th>
+                            <th>Student Name</th>
+                            <th>Purpose</th>
+                            <th>Lab Room</th>
+                            <th>Requested Time-In</th>
+                            <th>Request Created on</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        include('database.php'); 
+
+                        $sql = "SELECT booking.*, student.s_idno, student.s_name 
+                                FROM booking 
+                                JOIN student ON booking.s_id = student.s_id 
+                                ORDER BY booking.b_request_dt DESC"; 
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<tr>';
+                                echo '<td>' . $row['s_idno'] . '</td>';
+                                echo '<td>' . $row['s_name'] . '</td>';
+                                echo '<td>' . $row['b_purpose'] . '</td>';
+                                echo '<td>' . $row['b_labroom'] . '</td>';
+                                echo '<td>' . $row['b_time_in'] . '</td>';
+                                echo '<td>' . $row['b_request_dt'] . '</td>';
+                                echo '<td>';
+
+                                if (is_null($row['b_status'])) {
+                                    echo '<span class="status-pending">Pending</span>';
+                                } else if ($row['b_status'] == 'accepted') {
+                                    echo '<span class="status-accepted">Accepted</span>';
+                                } else if ($row['b_status'] == 'denied') {
+                                    echo '<span class="status-denied">Denied</span>';
+                                }
+
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        } else {
+                            echo '<tr><td colspan="7">No booking requests found.</td></tr>';
+                        }
+                        $conn->close();
+                    ?>
+                    </tbody>
+                </table>
+                </div>
             </div>
         </section>
+
+
 
     </div>
 
 </body>
 <script>
+    function submitReservation() {
+        var formData = new FormData(document.getElementById('reservationForm'));
+        var timeIn = new Date(formData.get('timeIn'));
 
+        if (timeIn <= new Date()) {
+            alert('Please select a future date and time for "Requested Time In".');
+            return;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: 'php/submit_reservation.php',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                alert(response); 
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error submitting reservation:', error);
+                alert('Error submitting reservation. Please try again.'); 
+            }
+        });
+    }
 
 </script>
 </html>

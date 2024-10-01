@@ -640,12 +640,12 @@ button:hover{
 
 .records-header th:nth-child(7),
 .records-table td:nth-child(7) {
-  width: 15%;
+  width: 13%;
 }
 
 .records-header th:nth-child(8),
 .records-table td:nth-child(8) {
-  width: 15%;
+  width: 17%;
 }
 
 .recordsTableArea{
@@ -1110,4 +1110,169 @@ button:hover{
 .feedback-card p {
   margin: 10px 0;
   line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.reserve-container {
+  width: 60vh;
+  margin: 50px auto;
+}
+.reserve-container button[type="submit"] {
+  background-color: #734db9;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reserve-container button[type="submit"]:hover {
+  background-color: #573b8a;
+}
+
+.reserve-container label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.booking-table-container {
+  height: 80vh;
+  width: 90%;
+  margin: 20px auto;
+}
+.booking-table-thead, .booking-table-tbody {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 15px;
+}
+.booking-tbody-container{
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 0 0 15px 15px;
+}
+.booking-thead-container{
+  border-radius: 15px 15px 0 0;
+  background-color: #f2f2f2;
+}
+.booking-table-thead th, .booking-table-tbody td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.booking-table-thead th{
+  font-weight: bold;
+}
+.booking-table-tbody td{
+  min-height: 40px;
+  max-height: 40px;
+}
+.booking-table-thead tbody tr:hover, .booking-table-tbody tbody tr:hover {
+  background-color: #e9ecef;
+}
+.bt-container-01 button {
+  padding: 2px 4px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.bt-container-01 {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-accept {
+  background-color: #28a745; 
+}
+.btn-deny {
+  background-color: #dc3545;
+}
+
+.booking-table-thead th:nth-child(1),
+.booking-table-tbody td:nth-child(1) {
+  width: 7%; 
+}
+.booking-table-thead th:nth-child(2),
+.booking-table-tbody td:nth-child(2) {
+  width: 12%; 
+}
+.booking-table-thead th:nth-child(3),
+.booking-table-tbody td:nth-child(3) {
+  width: 21%; 
+}
+.booking-table-thead th:nth-child(4),
+.booking-table-tbody td:nth-child(4) {
+  width: 8%; 
+}
+.booking-table-thead th:nth-child(5),
+.booking-table-tbody td:nth-child(5) {
+  width: 7%; 
+}
+.booking-table-thead th:nth-child(6),
+.booking-table-tbody td:nth-child(6) {
+  width: 15%; 
+}
+.booking-table-thead th:nth-child(7),
+.booking-table-tbody td:nth-child(7) {
+  width: 15%; 
+}
+.booking-table-thead th:nth-child(8),
+.booking-table-tbody td:nth-child(8) {
+  width: 15%; 
+}
+
+
+.student-booking table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+.student-booking table, .student-booking thead {
+  background-color: #f2f2f2;
+}
+.student-booking table, .student-booking thead, .student-booking th {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.student-booking table, .student-booking tbody, .student-booking tr {
+  border-bottom: 1px solid #ddd;
+}
+.student-booking table, .student-booking tbody, .student-booking tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+.student-booking table, .student-booking tbody, .student-booking td {
+  padding: 10px;
+}
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+.status-accepted {
+  color: green;
+  font-weight: bold;
+}
+.status-denied {
+  color: red;
+  font-weight: bold;
 }
