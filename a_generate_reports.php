@@ -341,7 +341,6 @@ if(isset($_SESSION['admin_id'])) {
         var ctx1 = document.getElementById('chart1').getContext('2d');
         var ctx2 = document.getElementById('chart2').getContext('2d');
 
-        // Destroy existing chart instances if they exist
         if (chart1Instance) {
             chart1Instance.destroy();
         }

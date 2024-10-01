@@ -514,7 +514,7 @@ if (isset($_POST['studentId'])) {
         var filterStudentId = document.getElementById("filterStudentId").value;
         var filterPurpose = document.getElementById("filterPurpose").value;
         var filterLabRoom = document.getElementById("filterLabRoom").value;
-        var searchRecord = document.getElementById("searchRecord").value.toUpperCase(); // Get search input
+        var searchRecord = document.getElementById("searchRecord").value.toUpperCase(); 
         var searchDate = document.getElementById("searchDate").value;
         var rows = document.querySelectorAll(".records-table tr");
 
@@ -525,11 +525,9 @@ if (isset($_POST['studentId'])) {
             var timeIn = row.cells[6].textContent;
 
             var hideRow = false;
-            // Check if the row matches the search query
             if (searchRecord && studentId.toUpperCase().indexOf(searchRecord) === -1) {
                 hideRow = true;
             }
-            // Check if the row matches the dropdown filters
             if (filterStudentId && studentId !== filterStudentId) {
                 hideRow = true;
             }
@@ -539,7 +537,6 @@ if (isset($_POST['studentId'])) {
             if (filterLabRoom && labRoom !== filterLabRoom) {
                 hideRow = true;
             }
-            // Check if the row matches the selected date
             if (searchDate && timeIn.indexOf(searchDate) === -1) {
                 hideRow = true;
             }

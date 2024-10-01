@@ -179,7 +179,6 @@ if(isset($_SESSION['admin_id'])) {
                                         <div class="recordsTableBodyWrapper">
                                             <table class="recordsTableBody">
                                                 <tbody id="recordsTableBody">
-                                                    <!-- Records will be populated dynamically -->
                                                 </tbody>
                                             </table>
                                         </div> 

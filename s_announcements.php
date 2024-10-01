@@ -100,7 +100,6 @@ if(isset($_SESSION['user_id'])) {
                 <h3 style="font-size: 28px; font-weight: bold; text-align: left;">View Announcements</h3>
 
                 <?php
-                // Assuming you have fetched announcements using PHP and stored them in $announcements array
                 $sql = "SELECT * FROM announcements ORDER BY a_date DESC";
                 $result = $conn->query($sql);
 
