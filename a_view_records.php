@@ -74,12 +74,12 @@ if (isset($_POST['r_id'])) {
                             <span class="nav-item">Reset Password</span>
                         </a>
                     </li>
-                    <li class="inactive-tab">
+                    <!--<li class="inactive-tab">
                     <a href="a_reset_session.php">
                             <i class="fa-solid fa-arrows-rotate"></i>
                             <span class="nav-item">Reset Session</span>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="current-tab">
                     <a href="a_view_records.php">
                             <i class="fa-solid fa-eye"></i>
@@ -134,7 +134,7 @@ if (isset($_POST['r_id'])) {
 
                                 if ($result->num_rows > 0) {
                                     echo '<table class="records-header">';
-                                    echo '<tr><th>Student ID</th><th>Name</th><th>Course</th><th>Session Left</th><th>Purpose</th><th>Lab Room</th><th>Time In</th><th>Action</th></tr>';
+                                    echo '<tr><th>Student ID</th><th>Name</th><th>Course</th><th>Session Left</th><th>Purpose</th><th>Lab Room</th><th>Time In</th><th>Action</th><th>Record ID</th></tr>';
                                     echo '</table>';
                                     echo '<div class="records-tbody">';
                                     echo '<table class="records-table">';
@@ -149,6 +149,7 @@ if (isset($_POST['r_id'])) {
                                             echo '<td>' . $row["r_labroom"] . '</td>';
                                             echo '<td>' . $row["time_in"] . '</td>';
                                             echo '<td><i class="fas fa-hourglass-end action-icon" onclick="timeout(' . $row["r_id"] . ')"></i></td>';
+                                            echo '<td>' . $row["r_id"] . '</td>';
                                             echo '</tr>';
                                         }
                                     }

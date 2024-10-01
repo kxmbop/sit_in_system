@@ -19,7 +19,15 @@ if(isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <style>
+        .date-filter{
+            width: 45%;
+            padding: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
+            border: 1px solid rgb(190, 190, 190);
+        }
+    </style>
 </head>
 <body onload="showContent('search')">
     <div class="container">
@@ -47,12 +55,12 @@ if(isset($_SESSION['admin_id'])) {
                             <span class="nav-item">Reset Password</span>
                         </a>
                     </li>
-                    <li class="inactive-tab">
+                    <!--<li class="inactive-tab">
                     <a href="a_reset_session.php">
                             <i class="fa-solid fa-arrows-rotate"></i>
                             <span class="nav-item">Reset Session</span>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="inactive-tab">
                     <a href="a_view_records.php">
                             <i class="fa-solid fa-eye"></i>
@@ -194,16 +202,19 @@ if(isset($_SESSION['admin_id'])) {
                             ?>
                         </div>
                         <button onclick="exportToExcel()">Export to Excel</button>
-                        <h1 style="font-size:18px;">Data Analytics</h1>      
-                        <div id="analyticsSection" class="analytics-charts">
-                            <div class="chart-container">
-                                <canvas id="chart1"></canvas>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="chart2"></canvas>
+                        <div>
+                            <h1 style="font-size:18px;">Data Analytics</h1>      
+                            <input type="date" id="searchDateAnalytics" class="date-filter">
+                            <button onclick="fetchAndRenderCharts()">Generate Analytics</button>
+                            <div id="analyticsSection" class="analytics-charts">
+                                <div class="chart-container">
+                                    <canvas id="chart1"></canvas>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="chart2"></canvas>
+                                </div>
                             </div>
                         </div>
-
                     </div>    
                 </div>
             </div>
@@ -218,7 +229,7 @@ if(isset($_SESSION['admin_id'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     function filterTable() {
         var filterStudentId = document.getElementById("filterStudentId").value;
@@ -321,10 +332,73 @@ if(isset($_SESSION['admin_id'])) {
         });
     }
 
+    let chart1Instance;
+    let chart2Instance;
+
+    function generateBarCharts(data1, labels1, data2, labels2) {
+        var colors = ['#734db9', '#965fc7', '#b36fdb', '#d288ff', '#e6a8ff', '#f4c7ff', '#fedbff', '#f7e3ff', '#fbf0ff', '#fcecff', '#fdf9ff'];
+
+        var ctx1 = document.getElementById('chart1').getContext('2d');
+        var ctx2 = document.getElementById('chart2').getContext('2d');
+
+        // Destroy existing chart instances if they exist
+        if (chart1Instance) {
+            chart1Instance.destroy();
+        }
+        if (chart2Instance) {
+            chart2Instance.destroy();
+        }
+
+        chart1Instance = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: labels1,
+                datasets: [{
+                    label: 'Number of Sit-Ins by Purpose',
+                    data: data1,
+                    backgroundColor: colors.slice(0, data1.length),
+                    borderColor: '#734db9',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        chart2Instance = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels2,
+                datasets: [{
+                    label: 'Number of Sit-Ins by Laboratory Room',
+                    data: data2,
+                    backgroundColor: colors.slice(0, data2.length),
+                    borderColor: '#734db9',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
     function fetchAndRenderCharts() {
+        var selectedDate = document.getElementById('searchDateAnalytics').value;
+
         $.ajax({
             url: 'php/fetch_analytics_data.php',
             method: 'GET',
+            data: { date: selectedDate },
             dataType: 'json',
             success: function(response) {
                 var purposesData = response.purposesData;
@@ -342,14 +416,7 @@ if(isset($_SESSION['admin_id'])) {
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        var ctx1 = document.getElementById('chart1').getContext('2d');
-        var ctx2 = document.getElementById('chart2').getContext('2d');
-
-        generateBarCharts(purposesData, purposesLabels, labRoomsData, labRoomsLabels);
-    });
-
-    $(document).ready(function() {
-        fetchAndRenderCharts();
+        generateBarCharts([], [], [], []);
     });
 
 </script>

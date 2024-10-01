@@ -130,6 +130,18 @@ if(isset($_SESSION['user_id'])) {
                                 <option value="544">544</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="pcno">PC number:</label>
+                            <select id="pcno" name="pcno" required>
+                                <option value="">Select PC number</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <label for="timeIn">Requested Time In:</label>
@@ -154,15 +166,19 @@ if(isset($_SESSION['user_id'])) {
                     </thead>
                     <tbody>
                     <?php
-                        include('database.php'); 
+                        include('database.php');
 
                         $sql = "SELECT booking.*, student.s_idno, student.s_name 
                                 FROM booking 
                                 JOIN student ON booking.s_id = student.s_id 
-                                ORDER BY booking.b_request_dt DESC"; 
+                                WHERE student.s_id = '$user_id' 
+                                ORDER BY booking.b_request_dt DESC";
+
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
+
+
                             while ($row = $result->fetch_assoc()) {
                                 echo '<tr>';
                                 echo '<td>' . $row['s_idno'] . '</td>';
@@ -184,11 +200,15 @@ if(isset($_SESSION['user_id'])) {
                                 echo '</td>';
                                 echo '</tr>';
                             }
+
+                            echo '</tbody>';
+                            echo '</table>';
                         } else {
-                            echo '<tr><td colspan="7">No booking requests found.</td></tr>';
+                            echo '<p>No booking requests found.</p>';
                         }
+
                         $conn->close();
-                    ?>
+                        ?>
                     </tbody>
                 </table>
                 </div>

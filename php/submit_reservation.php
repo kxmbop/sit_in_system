@@ -1,15 +1,16 @@
 <?php
-if (isset($_POST['studentId'], $_POST['purpose'], $_POST['labroom'], $_POST['timeIn'])) {
+if (isset($_POST['studentId'], $_POST['purpose'], $_POST['labroom'], $_POST['pcno'], $_POST['timeIn'])) {
     $studentId = $_POST['studentId'];
     $purpose = $_POST['purpose'];
     $labroom = $_POST['labroom'];
+    $pcno = $_POST['pcno'];
     $timeIn = $_POST['timeIn'];
 
     include('../database.php'); 
 
-    $sql = "INSERT INTO booking (s_id, b_purpose, b_labroom, b_time_in) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO booking (s_id, b_purpose, b_labroom, b_pcno, b_time_in) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isis", $studentId, $purpose, $labroom, $timeIn);
+    $stmt->bind_param("isiis", $studentId, $purpose, $labroom, $pcno, $timeIn);
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {

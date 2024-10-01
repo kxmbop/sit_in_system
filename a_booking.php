@@ -47,12 +47,12 @@ if(isset($_SESSION['admin_id'])) {
                             <span class="nav-item">Reset Password</span>
                         </a>
                     </li>
-                    <li class="inactive-tab">
+                    <!--<li class="inactive-tab" type="hidden">
                     <a href="a_reset_session.php">
                             <i class="fa-solid fa-arrows-rotate"></i>
                             <span class="nav-item">Reset Session</span>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="inactive-tab">
                     <a href="a_view_records.php">
                             <i class="fa-solid fa-eye"></i>
@@ -106,6 +106,7 @@ if(isset($_SESSION['admin_id'])) {
                                     <th>Student Name</th>
                                     <th>Purpose</th>
                                     <th>Lab Room</th>
+                                    <th>PC No</th>
                                     <th>Requested Time-In</th>
                                     <th>Request Created on</th>
                                     <th>Action</th>
@@ -130,6 +131,7 @@ if(isset($_SESSION['admin_id'])) {
                                             echo '<td>' . $row['s_name'] . '</td>';
                                             echo '<td>' . $row['b_purpose'] . '</td>';
                                             echo '<td>' . $row['b_labroom'] . '</td>';
+                                            echo '<td>' . $row['b_pcno'] . '</td>';
                                             echo '<td>' . $row['b_time_in'] . '</td>';
                                             echo '<td>' . $row['b_request_dt'] . '</td>';
                                             echo '<td>';

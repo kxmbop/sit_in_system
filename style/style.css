@@ -1217,7 +1217,7 @@ button:hover{
 }
 .booking-table-thead th:nth-child(3),
 .booking-table-tbody td:nth-child(3) {
-  width: 21%; 
+  width: 18%; 
 }
 .booking-table-thead th:nth-child(4),
 .booking-table-tbody td:nth-child(4) {
@@ -1229,7 +1229,7 @@ button:hover{
 }
 .booking-table-thead th:nth-child(6),
 .booking-table-tbody td:nth-child(6) {
-  width: 15%; 
+  width: 5%; 
 }
 .booking-table-thead th:nth-child(7),
 .booking-table-tbody td:nth-child(7) {
@@ -1239,7 +1239,10 @@ button:hover{
 .booking-table-tbody td:nth-child(8) {
   width: 15%; 
 }
-
+.booking-table-thead th:nth-child(9),
+.booking-table-tbody td:nth-child(9) {
+  width: 15%; 
+}
 
 .student-booking table {
   width: 100%;
